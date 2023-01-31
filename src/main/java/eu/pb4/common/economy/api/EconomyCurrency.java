@@ -10,12 +10,12 @@ import net.minecraft.util.Identifier;
  */
 public interface EconomyCurrency {
     /**
-     * Currency's name, used by mods for display information
+     * 货币的名称，被模组用来显示信息
      */
     Text name();
 
     /**
-     * Identifier allowing you to get this instance. namespace should be equal to Provider's id.
+     * 允许您获取此实例的标识符。 namespace 应该等于 Provider 的 id。
      */
     Identifier id();
 
@@ -24,7 +24,7 @@ public interface EconomyCurrency {
     }
 
     /**
-     * Formats value for display/config storage
+     * 显示/配置存储的格式值
      *
      * @param value raw value
      * @param precise whatever it should be precise (down to lowest values)
