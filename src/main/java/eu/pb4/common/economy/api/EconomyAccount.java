@@ -9,23 +9,23 @@ import java.util.UUID;
 @SuppressWarnings({"unused"})
 public interface EconomyAccount {
     /**
-     * Accounts name, used for mods for a display
+     * 帐户名称，用于模组的显示
      */
     Text name();
 
     /**
-     * Main account owner. Return Util.NIL_UUID if it's server/console account or it doesn't have a main owner
+     * 主要帐户所有者。 如果它是服务器/控制台帐户或没有主要所有者，则返回 Util.NIL_UUID
      */
     UUID owner();
 
     /**
-     * Identifier allowing you to get this account. namespace should be equal to Provider's id.
+     * 允许您获取此帐户的标识符。 namespace 应该等于 Provider 的 id。
      * @return
      */
     Identifier id();
 
     /**
-     * Raw value of current account balance
+     * 账户余额的原始值
      */
     long balance();
 
@@ -34,7 +34,7 @@ public interface EconomyAccount {
     }
 
     /**
-     * Increases account's balance by value. It should be only successful if full amount can be transferred
+     * 按值增加帐户余额。 只有能全额转账才算成功
      */
     default EconomyTransaction increaseBalance(long value) {
         var t = this.canIncreaseBalance(value);
@@ -46,13 +46,12 @@ public interface EconomyAccount {
     }
 
     /**
-     * Checks if account's balance can be increased by value. It should be only successful if full amount can be transferred.
-     * All returned values should be the same as for successful operation
+     * 检查账户余额是否可以增加值。 只有可以全额转账才算成功。 所有返回值应与成功操作相同
      */
     EconomyTransaction canIncreaseBalance(long value);
 
     /**
-     * Decreases account's balance by value. It should be only successful if full amount can be transferred
+     * 按值减少帐户余额。 只有能全额转账才算成功
      */
     default EconomyTransaction decreaseBalance(long value) {
         var t = this.canDecreaseBalance(value);
@@ -64,23 +63,22 @@ public interface EconomyAccount {
     }
 
     /**
-     * Checks if account's balance can be increased by value. It should be only successful if full amount can be transferred.
-     * All returned values should be the same as for successful operation
+     * 检查账户余额是否可以增加值。 只有可以全额转账才算成功。 所有返回值应与成功操作相同
      */
     EconomyTransaction canDecreaseBalance(long value);
 
     /**
-     * Sets account's balance to a value
+     * 将帐户余额设置为一个值
      */
     void setBalance(long value);
 
     /**
-     * Provider managing this account
+     * 管理此帐户的提供商
      */
     EconomyProvider provider();
 
     /**
-     * Currency used by this account
+     * 此帐户使用的货币
      */
     EconomyCurrency currency();
 
